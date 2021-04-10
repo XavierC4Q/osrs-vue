@@ -1,4 +1,8 @@
 @tailwind base;
+#__nuxt {
+    min-height: 100vh;
+    @apply bg-yellow-100;
+}
 h1 {
   font-size: 3.2rem;
 }

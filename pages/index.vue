@@ -5,7 +5,10 @@
       <button type="submit">Search</button>
     </form>
 
-    <monster-basic-vue v-if="monster" :monster="monster" />
+    <monster-basic-vue
+      v-if="monster"
+      :monster="monster"
+    />
   </div>
 </template>
 
@@ -22,7 +25,7 @@ export default Vue.extend({
   }),
   computed: {
     formattedMonsterName() {
-      const input = this.input.toLowerCase();
+      const input = this.input.toLowerCase()
       return input.charAt(0).toUpperCase() + input.slice(1)
     },
   },
@@ -39,8 +42,9 @@ export default Vue.extend({
       this.error = false
 
       try {
+        const { formattedMonsterName } = this
         const monster = await this.$axios(
-          `https://api.osrsbox.com/monsters?where={ "name": "${this.formattedMonsterName}", "duplicate": false }`
+          `https://api.osrsbox.com/monsters?where={ "name": "${formattedMonsterName}", "duplicate": false }`
         )
         this.monster = monster.data._items
         this.loading = false
